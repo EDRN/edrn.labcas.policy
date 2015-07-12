@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configure
+    xmlns='http://namespaces.zope.org/zope'
+    xmlns:genericsetup='http://namespaces.zope.org/genericsetup'
+    xmlns:zcml='http://namespaces.zope.org/zcml'
+    i18n_domain='edrn.labcas.policy'>
+    <include package="z3c.autoinclude" file="meta.zcml" />
+    <includeDependencies package='.' />
+    <genericsetup:registerProfile
+        name='default'
+        title='EDRN LabCAS Site Policy'
+        directory='profiles/default'
+        description='Turns a Plone site into an EDRN LabCAS site.'
+        provides='Products.GenericSetup.interfaces.EXTENSION'
+    />
+    <include
+        zcml:condition='installed Products.GenericSetup.upgrade'
+        file='upgrades.zcml'
+    />
+</configure>
